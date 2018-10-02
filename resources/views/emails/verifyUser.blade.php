@@ -1,20 +1,20 @@
-{{--
+
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Welcome Email</title>
 </head>
 
 <body>
-    <h2>Welcome to the site {{$user['name']}}</h2>
-    <br/> Your registered email-id is {{$user['email']}} , Please click on the below link to verify your email account
-    <br/>
-    <a href="{{url('user/verify', $user->verifyUser->token)}}">Verify Email</a>
+<h2>Welcome to the site {{$user['name']}}</h2>
+<br/>
+Your registered email-id is {{$user['email']}} , Please click on the below link to verify your email account
+<br/>
+<a href="{{url('user/verify', $user->verifyUser->token)}}">Verify Email</a>
 </body>
 
-</html> --}}
-
+</html>
+{{-- 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -120,4 +120,4 @@
     </table>
 </body>
 
-</html>
+</html> --}}
