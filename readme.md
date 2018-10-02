@@ -11,7 +11,7 @@ composer create-project --prefer-dist laravel/laravel NomeProjeto "5.6.*"
 ### Comandos no console para clonar um projeto do Github
 
 ``` bash
-git clone git://github.com/kallbuloso/laravelmaster
+git clone git://github.com/kallbuloso/E-Lyder.git
 ```
 
 ### Configurações iniciais
