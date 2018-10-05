@@ -1,26 +1,27 @@
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="{{ config('app.name') }}" />
-    <meta name="author" content="" />
-
-    <link rel="icon" href="{{ asset( "fe/assets/images/favicon.ico") }}">
-
-    <title>{{ config('app.name') }}</title>
-
-    <link rel="stylesheet" href="{{ asset( "fe/assets/css/bootstrap.css") }}">
-    <link rel="stylesheet" href="{{ asset( "fe/assets/css/font-icons/entypo/css/entypo.css") }}">
-    <link rel="stylesheet" href="{{ asset( "fe/assets/css/neon.css") }}">
-
-    <script src="{{ asset( "fe/assets/js/jquery-1.11.3.min.js" ) }}"></script>
-
-    <!--[if lt IE 9]><script src="{{ asset( "fe/assets/js/ie8-responsive-file-warning.js" ) }}"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+<meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
+<meta name="author" content="PIXINVENT">
+<title>1 Column - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin Dashboard</title>
+<link rel="apple-touch-icon" href="ma/app-assets/images/ico/apple-icon-120.png">
+<link rel="shortcut icon" type="image/x-icon" href="ma/app-assets/images/ico/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
+<link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+<!-- BEGIN VENDOR CSS-->
+<link rel="stylesheet" type="text/css" href="ma/app-assets/css/vendors.css">
+<link rel="stylesheet" type="text/css" href="ma/app-assets/vendors/css/ui/prism.min.css">
+<!-- END VENDOR CSS-->
+<!-- BEGIN MODERN CSS-->
+<link rel="stylesheet" type="text/css" href="ma/app-assets/css/app.css">
+<link rel="stylesheet" type="text/css" href="ma/assets/css/style.css">
+<!-- END MODERN CSS-->
+<!-- BEGIN Page Level CSS-->
+<link rel="stylesheet" type="text/css" href="ma/app-assets/css/core/menu/menu-types/horizontal-menu.css">
+<!-- END Page Level CSS-->
+<!-- BEGIN Custom CSS-->
+<link rel="stylesheet" type="text/css" href="ma/assets/css/style.css">
+<!-- END Custom CSS-->
 
 @stack('stylesheets')
