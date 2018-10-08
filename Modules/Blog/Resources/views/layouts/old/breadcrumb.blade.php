@@ -6,9 +6,9 @@
         <div class="row breadcrumbs-top">
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                     </li>
-                    <li class="breadcrumb-item"><a href="#">Page headers</a>
+                    <li class="breadcrumb-item"><a href="{{ url('/blog') }}">Blog</a>
                     </li>
                     <li class="breadcrumb-item active">Breadcrumbs bottom
                     </li>

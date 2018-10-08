@@ -1,131 +1,30 @@
-@extends('blog::layouts.app')
-
-@section('post')
-    {{-- <h1>Hello World</h1>
-
-    <p>
-        This view is loaded from module: {!! config('blog.name') !!}
-    </p> --}}
-    <!-- Blog Post -->
-    <div class="blog-post">						
-        <div class="post-thumb">						
-            <a href="blog-post.html">
-                <img src="fe/assets/images/blog-thumb-1.png" class="img-rounded" />
-                <span class="hover-zoom"></span>
-            </a>							
-        </div>						
-        <div class="post-details">							
-            <h3>
-                <a href="blog-post.html">We hill lady will both sang room by</a>
-            </h3>							
-            <div class="post-meta">								
-                <div class="meta-info">
-                    <i class="entypo-calendar"></i> 04 November 2015
-                </div>								
-                <div class="meta-info">
-                    <i class="entypo-comment"></i>
-                    3 comments
-                </div>								
-            </div>							
-            <p>Paid was hill sir high. For him precaution any advantages dissimilar comparison few terminated projecting. Prevailed discovery immediate objection of ye at. Repair summer one winter living feebly pretty his. In so sense am known these since.</p>
-        </div>						
-    </div>
-    
-    <!-- Blog Post -->
-    <div class="blog-post">
-        
-        <div class="post-thumb">
-        
-            <a href="blog-post.html">
-                <img src="fe/assets/images/blog-thumb-1.png" class="img-rounded" />
-                <span class="hover-zoom"></span>
-            </a>
-            
-        </div>
-        
-        <div class="post-details">
-            
-            <h3>
-                <a href="blog-post.html">Allowance sweetness direction to as...</a>
-            </h3>
-            
-            <div class="post-meta">
-                
-                <div class="meta-info">
-                    <i class="entypo-calendar"></i> 02 November 2015								</div>
-                
-                <div class="meta-info">
-                    <i class="entypo-comment"></i>
-                    0 comments
-                </div>
-                
-            </div>
-            
-            <p>Paid was hill sir high. For him precaution any advantages dissimilar comparison few terminated projecting. Prevailed discovery immediate objection of ye at. Repair summer one winter living feebly pretty his. In so sense am known these since.</p>
-            
-        </div>
-        
-    </div>
-    
-    <!-- Blog Post -->
-    <div class="blog-post">
-        
-        <div class="post-thumb">
-        
-            <a href="blog-post.html">
-                <img src="fe/assets/images/blog-thumb-1.png" class="img-rounded" />
-                <span class="hover-zoom"></span>
-            </a>
-            
-        </div>
-        
-        <div class="post-details">
-            
-            <h3>
-                <a href="blog-post.html">Is we miles ready he might going</a>
-            </h3>
-            
-            <div class="post-meta">
-                
-                <div class="meta-info">
-                    <i class="entypo-calendar"></i> 01 November 2015								</div>
-                
-                <div class="meta-info">
-                    <i class="entypo-comment"></i>
-                    1 comment
-                </div>
-                
-            </div>
-            
-            <p>Paid was hill sir high. For him precaution any advantages dissimilar comparison few terminated projecting. Prevailed discovery immediate objection of ye at. Repair summer one winter living feebly pretty his. In so sense am known these since.</p>
-            
-        </div>
-        
-    </div>
-    
-
-    <!-- Blog Pagination -->
-    <div class="text-center">					
-        <ul class="pagination">
-            <li class="active">
-                <a href="#">1</a>
-            </li>
-            <li>
-                <a href="#">2</a>
-            </li>
-            <li>
-                <a href="#">3</a>
-            </li>
-            <li>
-                <a href="#">4</a>
-            </li>
-            <li>
-                <a href="#">5</a>
-            </li>
-            <li>
-                <a href="#">Next</a>
-            </li>
-        </ul>
-        
-    </div>	
+@extends('blog::layouts.app') 
+@section('posts')
+	<!-- Posts
+	============================================= -->
+	<div id="posts" class="small-thumbs">
+		<div class="entry clearfix">
+			<div class="entry-image">
+				<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="images/blog/small/17.jpg" alt="Standard Post with Image"></a>
+			</div>
+			<div class="entry-c">
+				<div class="entry-title">
+					<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
+				</div>
+				<ul class="entry-meta clearfix">
+					<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
+					<li><a href="#"><i class="icon-user"></i> admin</a></li>
+					<li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>
+					<li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>
+					<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+					<li><a href="#"><i class="icon-camera-retro"></i></a></li>
+				</ul>
+				<div class="entry-content">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.</p>
+					<a href="blog-single.html"class="more-link">{{ __('Ler mais') }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- #posts end -->
 @stop

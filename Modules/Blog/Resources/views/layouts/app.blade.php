@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="loading" data-textdirection="ltr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
 <head>
-    @include('layouts.frontend.head')
+    @include('blog::layouts.head')
 </head>
-<body class="horizontal-layout horizontal-menu horizontal-menu-padding 2-columns   menu-expanded" data-open="click" data-menu="horizontal-menu" data-col="2-columns">
+<body class="stretched">
+    <!-- Document Wrapper
+        ============================================= -->
+        <div id="wrapper" class="clearfix">
 
-    @include('layouts.frontend.fixed_top')
+        @include('blog::layouts.header')
 
-    @include('layouts.frontend.top_menu')
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
 
-    <div class="app-content container center-layout mt-2">
-        <div class="content-wrapper">
-
-            @include('blog::layouts.breadcrumb')
-
-            <div class="content-body">
-                {{--  <section class="row">  --}}
-                    {{--  <div class="col-sm-12">  --}}
-                        @include('blog::layouts.blog')
-                    {{--  </div>  --}}
-                {{--  </section>  --}}
+            <div class="container clearfix">
+                <h1>Blog</h1>
+                <span>Our Latest News</span>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                </ol>
             </div>
-        </div>
-    </div>
-    @include('layouts.frontend.footer')
 
-    @include('layouts.frontend.script')
+        </section>
+        <!-- #page-title end -->
+
+        @include('blog::layouts.content')
+
+        @include('blog::layouts.footer')
+
+        @include('blog::layouts.scripts')
 </body>
 </html>
 
