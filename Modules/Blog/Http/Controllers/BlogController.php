@@ -5,16 +5,23 @@ namespace Modules\Blog\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Blog\Models\Post;
 
 class BlogController extends Controller
 {
+
+    protected $limit = 40;
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('blog::index');
+        $posts = Post::with('author')
+                    ->latestFirst()
+                    ->published()
+                    ->paginate($this->limit);
+        return view('blog::index', compact('posts'));
     }
 
     /**

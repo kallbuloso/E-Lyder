@@ -15,7 +15,10 @@ class BlogDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
-        // $this->call("OthersTableSeeder");
+        $this->call([
+            // SeedFakeBlogPostsTableSeeder::class,
+            // PostTableSeeder::class,
+            // UsersTableSeeder::class
+        ]);
     }
 }

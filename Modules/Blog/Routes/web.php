@@ -13,4 +13,16 @@
 
 Route::prefix('blog')->group(function() {
     Route::get('/', 'BlogController@index');
+
+    Route::group([
+        'middleware' => ['web', 'auth'], 
+        'prefix' => 'admin', 
+        'namespace' => 'Admin'],
+        function()
+    {
+        Route::get('/', 'PostsController@admin')->name('dashboard');
+        Route::get('/post', 'PostsController@index')->name('allPosts');
+        Route::get('/create', 'PostsController@create')->name('postCreate');
+        // rotas do blog
+    });
 });
