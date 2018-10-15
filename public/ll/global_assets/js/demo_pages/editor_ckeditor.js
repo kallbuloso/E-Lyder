@@ -12,7 +12,6 @@
 
 var CKEditor = function() {
 
-
     //
     // Setup module components
     //
@@ -23,16 +22,31 @@ var CKEditor = function() {
             console.warn('Warning - ckeditor.js is not loaded.');
             return;
         }
-        
 
         // Full featured editor
         // ------------------------------
-
+        //CKEDITOR.config.removePlugins = "elementspath";
+        //CKEDITOR.config.resize_enabled = false;
         // Setup
         CKEDITOR.replace('editor-full', {
             height: 400,
-            extraPlugins: 'forms'
+            extraPlugins: 'forms',
+
         });
+
+
+        CKEDITOR.replace( 'editor-parce', {
+            toolbar: [
+                { name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
+                { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+                { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
+                '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
+                { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+                { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
+                { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+                { name: 'tools', items : [ 'Maximize', 'ShowBlocks'] }
+            ]} );
+
 
 
         // Readonly editor

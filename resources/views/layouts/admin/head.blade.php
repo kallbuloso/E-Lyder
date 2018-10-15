@@ -12,8 +12,8 @@
 <link href="{{ asset('ll/global_assets/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('ll/global_assets/css/icons/fontawesome/styles.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('ll/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('ll/assets/css/bootstrap_limitless.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('ll/assets/css/layout.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('ll/assets/css/bootstrap_limitless.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('ll/assets/css/layout.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('ll/assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('ll/assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
 @stack('stylesheets')
@@ -27,6 +27,6 @@
 <!-- /core JS files -->
 
 <!-- Theme JS files -->
-<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('ll/js/app.js') }}"></script>
 @stack('scripts')
 <!-- /theme JS files -->

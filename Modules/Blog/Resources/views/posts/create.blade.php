@@ -5,27 +5,23 @@
     window.onload = function()  {
         CKEDITOR.replace( 'editor', {
             toolbar: [
-                {{--  { name: 'document', items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },  --}}
-                { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
-                {{--  { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },  --}}
-                {{--  { name: 'forms', items : [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 
-                    'HiddenField' ] },  --}}
-                {{--  '/',  --}}
+               
+                { name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
                 { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
                 { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
                 '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
                 { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
                 { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
-                {{--  '/',  --}}
                 { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
-                {{--  { name: 'colors', items : [ 'TextColor','BGColor' ] },  --}}
                 { name: 'tools', items : [ 'Maximize', 'ShowBlocks'] }
             ]}         
             );
         CKEDITOR.config.removePlugins = "elementspath";
         CKEDITOR.config.resize_enabled = false;
      };
-</script> 
+</script>
+    {{--  <script src="{{ asset('ll/global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script src="{{ asset('ll/global_assets/js/demo_pages/editor_summernote.js') }}"></script>  --}}
 @endpush
 {{--  scripts  --}}
 @push('scripts')
@@ -33,7 +29,6 @@
     <script src="{{ asset('ll/global_assets/js/plugins/forms/inputs/inputmask.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
-    <script src="{{ asset('ll/global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/plugins/extensions/jquery_ui/core.min.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/plugins/forms/tags/tagsinput.min.js') }}"></script>
@@ -41,23 +36,22 @@
     <script src="{{ asset('ll/global_assets/js/plugins/forms/inputs/touchspin.min.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/plugins/forms/inputs/maxlength.min.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/plugins/forms/inputs/formatter.min.js') }}"></script>
-
-    <script src="{{ asset('ll/global_assets/js/demo_pages/form_floating_labels.js') }}"></script>
+    <script src="{{ asset('ll/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js') }}"></script>
+    
+    {{--  <script src="{{ asset('ll/global_assets/js/demo_pages/form_floating_labels.js') }}"></script>  --}}
     {{--  date picker  --}}
 	<script src="{{ asset('ll/global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
 	<script src="{{ asset('ll/global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
-	{{--  <script src="{{ asset('ll/global_assets/js/plugins/pickers/anytime.min.js') }}"></script>
-	<script src="{{ asset('ll/global_assets/js/plugins/pickers/pickadate/picker.js') }}"></script>
-	<script src="{{ asset('ll/global_assets/js/plugins/pickers/pickadate/picker.date.js') }}"></script>
-	<script src="{{ asset('ll/global_assets/js/plugins/pickers/pickadate/picker.time.js') }}"></script>
-	<script src="{{ asset('ll/global_assets/js/plugins/pickers/pickadate/legacy.js') }}"></script>
-	<script src="{{ asset('ll/global_assets/js/plugins/notifications/jgrowl.min.js') }}"></script>  --}}
     {{--  editors  --}}
     <script src="{{ asset('ll/global_assets/js/plugins/editors/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ll/global_assets/js/demo_pages/form_select2.js') }}"></script>
+    {{--  <script src="{{ asset('ll/global_assets/js/plugins/editors/summernote/summernote.min.js') }}"></script>  --}}
+
 
     {{--  date picker  --}}
     <script src="{{ asset('ll/global_assets/js/demo_pages/picker_date.js') }}"></script>
-    <script src="{{ asset('ll/global_assets/js/demo_pages/editor_ckeditor.js') }}"></script>
+    {{--  <script src="{{ asset('ll/global_assets/js/demo_pages/editor_ckeditor.js') }}"></script>  --}}
+ 
 
 @endpush
 @section('header')
@@ -122,50 +116,30 @@
                 <div class="card-body">
                     <fieldset class="mb-3">
                         <div class="form-group row">
-                            <label class="col-form-label col-lg-2">{{ __('Título da Publicação') }}</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="title" class="form-control" placeholder="{{ __('Título da Publicação') }}">
-                            </div>
-                        </div>                        
+                            {{--  Text  --}}
+                            {{ Form::textGroup('10','title', null, ['placeholder' => 'Título do post'], 'Título do Post *' , $errors) }}
+                        </div>
+
                         <div class="form-group row">
                             {{--  Data  --}}
-                            <label class="col-form-label col-lg-2">{{ __('Data de Pubicação') }}</label>
-                            <div class="col-lg-4">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-calendar22"></i></span>
-                                    </span>
-                                    <input type="text"  class="form-control daterange-single">
-                                </div>
-                            </div>
+                            {{ Form::dateGroup('4','date', null, 'Data da Publicação' , $errors) }}
                             {{--  Categoria  --}}
-                            <label class="col-form-label col-lg-2"> {{ __('Categoria') }} </label>
-                            <div class="col-lg-4">
-                                <div class="select-group">
-                                    <select class="form-control" name="category" id="">
-                                        <option value="">{{ __('Escolha uma categoria') }}</option>
-                                        @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"> {{ $category->name }} </option>                                    
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                            {{ Form::selectGroup('4','categories', $categories, ['placeholder' => 'Selecione uma categoria...'], 'Categoria *' , $errors) }}
                         </div>
-                                        
+                        
                         <div class="form-group row">
-                            <label class="col-form-label col-lg-2">{{ __('Resumo da Publicação') }}</label>
-                            <div class="col-lg-10">
-                                <textarea name="excerpt" rows="4" class="form-control" placeholder="{{ __('Resumo da Publicação') }}"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group form-group-float">
-                            <label class="form-group-float-label">{{ __('Conteúdo da Publicação') }}</label>
-                            <textarea name="editor"  rows="4" cols="4" class="form-control" placeholder="{{ __('Conteúdo da Publicação') }}">Conteúdo do Post</textarea>
-                            {{--  <textarea   name="editor-full" id="editor-full" rows="4" cols="4" class="form-control" placeholder="{{ __('Conteúdo da Publicação') }}"></textarea>  --}}
+                            {{--  textarea  --}}
+                            {{ Form::textAreaGroup('10','excerpt', ['placeholder' => 'Faça um breve resumo da sua publicação... '], 'Resumo da Publicação *' , $errors) }}
+                        </div>   
 
-                            {{--  <script>
-                                    CKEDITOR.replace( 'editor' );
-                            </script>  --}}
+                        <div class="form-group ">
+                            {{--  Editor  --}}
+                            {{ Form::textEditorGroup('','editor', [''], 'Conteúdo da Publicação *' , $errors) }}
+                        </div>
+
+                        <div class="form-group row">
+                            {{--  Tag's  --}}
+                            {{ Form::mSelectGroup('8','tags[]', ['Para selecionar várias tag\'s segure a tecla Ctrl' => $tags], ['data-placeholder' => 'Pressione "Ctrl" para selecionar mais de uma tag...'], 'Tag\'s' , $errors) }}
                         </div>
 
                         <div class="text-right">

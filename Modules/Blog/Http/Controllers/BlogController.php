@@ -48,7 +48,12 @@ class BlogController extends Controller
      */
     public function show()
     {
-        return view('blog::show');
+        $posts = Post::with('author')
+                    ->latestFirst()
+                    ->published()
+                    ->paginate($this->limit);
+        return view('blog::show', compact('posts'));
+        // return view('blog::show');
     }
 
     /**

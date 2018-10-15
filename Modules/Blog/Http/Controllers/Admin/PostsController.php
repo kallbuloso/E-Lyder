@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Blog\Models\Post;
+use Modules\Blog\Models\Tag;
 use Modules\Blog\Models\Category;
+use App\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -39,8 +43,10 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('blog::posts.create', compact('categories'));
+        $categories = Category::pluck('name', 'id')->toArray();
+        // $tags = Tag::all();
+        $tags = Tag::pluck('name', 'id')->toArray();
+        return view('blog::posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -50,6 +56,32 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'author_id' => '',
+            'slug' => '',
+            'excerpt' => 'required',
+            // 'body' => '',
+            'editor' => 'required', // => body
+            'image' => '',
+            'published_at' => '',
+            'categories' => 'required',
+        ]);
+
+        // return Post::Create($request->all());
+        $post = new Post;
+        $post->author_id = '1';
+        $post->slug = str_random(20);
+        $post->title = $request->get('title');
+        $post->body = $request->get('editor');
+        $post->excerpt = $request->get('excerpt');
+        $post->published_at = Carbon::parse($request->get('date'));/*$request->has('published_at') ? Carbon::parse($request->get('date')) : Null;*/
+        $post->category_id = $request->get('categories');
+        // // tag's
+        $post->save();
+        $post->tags()->attach($request->get('tags'));
+
+        return back()->with('flash', 'Publicado com sucesso');
     }
 
     /**

@@ -9,6 +9,9 @@
     <!-- /page header -->
     <!-- Content area -->
     <div class="content">
+        @if (session()->has('flash'))
+            <div class="alert alert-success">{{ session('flash') }}</div>
+        @endif
         @yield('content')
     </div>
     <!-- /content area -->
