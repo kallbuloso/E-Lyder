@@ -1,5 +1,12 @@
-@extends('blog::layouts.app') 
+@extends('blog::layouts.app')
+
+@section('meta-title', config('name'))
+@section('meta-description', 'Blog du mara')
+
 @section('posts')
+<!-- Post Content
+============================================= -->
+<div class="postcontent nobottommargin clearfix">
 	<!-- Posts
 	============================================= -->
 	<div id="posts" class="small-thumbs">
@@ -7,13 +14,13 @@
 			<div class="entry clearfix">
 				{{--  @if ($post->imageUrl)  --}}
 					<div class="entry-image">
-						<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="{{ $post->image ?? 'images/blog/small/17.jpg'}}" alt="Standard Post with Image"></a>
+						<a href="{{ asset('images/blog/full/17.jpg') }}" data-lightbox="image"><img class="image_fade" src="{{ $post->image ?? 'images/blog/small/17.jpg'}}" alt="Standard Post with Image"></a>
 					</div>					
 				{{--  @endif  --}}
 
 				<div class="entry-c">
 					<div class="entry-title">
-						<h2><a href="blog-single.html">{{ $post->title }}</a></h2>
+						<h2><a href="blog/{{ $post->url }}">{{ $post->title }}</a></h2>
 					</div>
 					<ul class="entry-meta clearfix">
 						<li><i class="icon-calendar3"></i> {{ $post->date }} </li>
@@ -33,7 +40,7 @@
 					</ul>
 					<div class="entry-content">
 						<p>{{ $post->excerpt }}</p>
-						<a href="blog/{{ $post->id }}"class="more-link">{{ __('Ler mais') }}</a>
+						<a href="blog/{{ $post->url }}"class="more-link">{{ __('Ler mais') }}</a>
 					</div>
 				</div>
 			</div>			
@@ -41,4 +48,16 @@
 
 	</div>
 	<!-- #posts end -->
+
+	<!-- Pagination
+	============================================= -->
+	<div class="row mb-3">
+		<div class="col-12">
+			<a href="#" class="btn btn-outline-secondary float-left">&larr; {{ __('Anterior') }}</a>
+			<a href="#" class="btn btn-outline-dark float-right">{{ __('Próximo') }} &rarr;</a>
+		</div>
+	</div>
+	<!-- .pager end -->
+
+</div><!-- .postcontent end -->
 @stop

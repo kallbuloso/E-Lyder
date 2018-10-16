@@ -13,7 +13,7 @@
 
 Route::prefix('blog')->group(function() {
     Route::get('/', 'BlogController@index');
-    Route::get('/{id}', 'BlogController@show');
+    Route::get('/{post}', 'BlogController@show');
 
     Route::group([
         'middleware' => ['web', 'auth'], 
@@ -25,6 +25,7 @@ Route::prefix('blog')->group(function() {
         Route::get('/post', 'PostsController@index')->name('allPosts');
         Route::get('/create', 'PostsController@create')->name('postCreate');
         Route::post('/create', 'PostsController@store')->name('postStore');
+        Route::get('/edit', 'PostsController@edit')->name('postEdit');
         // rotas do blog
     });
 });

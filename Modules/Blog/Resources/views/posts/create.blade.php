@@ -1,25 +1,25 @@
 @extends('blog::admin.app')
 {{--  stylesheets  --}}
 @push('stylesheets')
-<script type="text/javascript">
-    window.onload = function()  {
-        CKEDITOR.replace( 'editor', {
-            toolbar: [
-               
-                { name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
-                { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
-                { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
-                '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
-                { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
-                { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
-                { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
-                { name: 'tools', items : [ 'Maximize', 'ShowBlocks'] }
-            ]}         
-            );
-        CKEDITOR.config.removePlugins = "elementspath";
-        CKEDITOR.config.resize_enabled = false;
-     };
-</script>
+    <script type="text/javascript">
+        window.onload = function()  {
+            CKEDITOR.replace( 'editor', {
+                toolbar: [
+                
+                    { name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
+                    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+                    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
+                    '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
+                    { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+                    { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
+                    { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+                    { name: 'tools', items : [ 'Maximize', 'ShowBlocks'] }
+                ]}         
+                );
+            CKEDITOR.config.removePlugins = "elementspath";
+            CKEDITOR.config.resize_enabled = false;
+        };
+    </script>
     {{--  <script src="{{ asset('ll/global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
     <script src="{{ asset('ll/global_assets/js/demo_pages/editor_summernote.js') }}"></script>  --}}
 @endpush
@@ -104,15 +104,15 @@
 @endsection
 @section('content')
 
-{!! Form::open(['class' => "form-horizontal", 'method' => 'POST']) !!}
-    <div class="row">
-        <div class="col-md-12">
-            <!-- Basic card -->
-            <div class="card">
-                <div class="card-header header-elements-inline">
-                    <h3 class="card-title">Criar um Post</h3>
-                </div>
-
+<div class="row">
+    <div class="col-md-12">
+        <!-- Basic card -->
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h3 class="card-title">Criar um Post</h3>
+            </div>
+            
+            {!! Form::open(['class' => "form-horizontal", 'method' => 'POST']) !!}
                 <div class="card-body">
                     <fieldset class="mb-3">
                         <div class="form-group row">
@@ -149,11 +149,11 @@
                     </fieldset>
                     {{--  {!! Form::close() !!}  --}}
                 </div>
+            {!! Form::close() !!}
             </div>
             <!-- /basic card -->
         </div>
 
     </div>
-{!! Form::close() !!}
 
 @endsection

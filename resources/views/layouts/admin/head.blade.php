@@ -28,5 +28,4 @@
 
 <!-- Theme JS files -->
 <script src="{{ asset('ll/js/app.js') }}"></script>
-@stack('scripts')
 <!-- /theme JS files -->

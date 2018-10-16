@@ -26,7 +26,7 @@
 
 		</div>
 		<!-- /page content -->
-		@stack('stylesheets')
+		@stack('scripts')
 	</body>
 </html>
 

@@ -25,9 +25,11 @@ class PostTableSeeder extends Seeder
             $publishedDate = clone($date);
             // $tamps = Carbon::now()->subDays(100)->addDays($i);
             $image = "Post_image_" . rand(1,5) . "jpg";
+            $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
             DB::table('posts')->insert([
                 'author_id'     => "{$i}",
-                'title'     => $faker->sentence($nbWords = 6, $variableNbWords = true),
+                'title'     => $title,
+                'url'     => str_slug($title),
                 'slug'      => $faker->slug(),
                 'excerpt'       => $faker->text(rand(250,300)),
                 'body'      => $faker->paragraphs(rand(10,15),true),

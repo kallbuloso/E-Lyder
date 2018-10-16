@@ -1,7 +1,7 @@
 @extends('blog::admin.app')
 {{--  stylesheets  --}}
 @push('stylesheets')
-    
+
 @endpush
 
 @section('header')
@@ -53,56 +53,60 @@
     
 @endsection
 @section('content')
-    <p><h4 class="card-title">Posts</h4></p>
+    {{--  <p><h4 class="card-title">Posts</h4></p>  --}}
     <!-- Basic card -->
-    <div class="card">
-        {{--  <div class="card-header header-elements-inline">
-            <p><h3 class="card-title">Posts</h3></p>  --}}
-            {{--  <div class="header-elements">
-                <div class="list-icons">  --}}
-                    {{--  <a class="list-icons-item" data-action="collapse"></a>  --}}
-                    {{--  <a class="list-icons-item" data-action="reload"></a>  --}}
-                    {{--  <a class="list-icons-item" data-action="remove"></a>  --}}
-                {{--  </div>
+    
+    <div class="card box-shadow-1">
+        <div class="card-header header-elements-inline">
+            <h3 class="card-title">{{ __('Lista de Posts de...') }}</h3>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                {{ __('Criar novo Post') }} 
+                <i class="icon-paperplane ml-2">
+            </i></button>
+        </div>
+        {{--  <div class="card-body ">  --}}
+                    
+                {{--  </div>   --}}
+            {{--  </fieldset>         --}}
+            {{--  <div class="card-body">
+                    This example shows the basic use case of the <code>ColReorder</code> plugin. With ColReorder enabled for a table, the user has the ability to click and drag any table header cell, and drop it where they wish the column to be inserted. The insert point is shown visually, and the column reordering is done as soon as the mouse button is released. ColReorder is added to a DataTable through the <code>R</code> character added to the <code>dom</code>.
             </div>  --}}
-        {{--  </div>          --}}
-        {{--  <div class="card-body">
-                This example shows the basic use case of the <code>ColReorder</code> plugin. With ColReorder enabled for a table, the user has the ability to click and drag any table header cell, and drop it where they wish the column to be inserted. The insert point is shown visually, and the column reordering is done as soon as the mouse button is released. ColReorder is added to a DataTable through the <code>R</code> character added to the <code>dom</code>.
-        </div>  --}}
-        <table class="table data-table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Prévia</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($posts as $post)
+            
+            <table class="table data-table">
+                <thead>
                     <tr>
-                        <td>{{ $post->id }}</td>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->excerpt }}</td>
-                        <td class="text-center">
-                            <div class="list-icons">
-                                <div class="dropdown">
-                                    <a href="#" class="list-icons-item" data-toggle="dropdown">
-                                        <i class="icon-menu9"></i>
-                                    </a>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Prévia</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($posts as $post)
+                        <tr>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ $post->title }}</td>
+                            <td>{{ $post->excerpt }}</td>
+                            <td class="text-center">
+                                <div class="list-icons">
+                                    <div class="dropdown">
+                                        <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                            <i class="icon-menu9"></i>
+                                        </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#" class="dropdown-item"><i class="fa fa-eye"></i> {{ __('Ver') }}</a>
-                                        <a href="#" class="dropdown-item"><i class="fa fa-edit"></i> {{ __('Editar') }}</a>
-                                        <a href="#" class="dropdown-item"><i class="fa fa-close"></i> {{ __('Excluir') }}</a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="#" class="dropdown-item"><i class="fa fa-eye"></i> {{ __('Ver') }}</a>
+                                            <a href="#" class="dropdown-item"><i class="fa fa-edit"></i> {{ __('Editar') }}</a>
+                                            <a href="#" class="dropdown-item"><i class="fa fa-close"></i> {{ __('Excluir') }}</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        {{--  </div>  --}}
     </div>
     <!-- /basic card -->
 @endsection
@@ -157,4 +161,28 @@
             });
         });
     </script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            {!! Form::open(['class' => "form-horizontal", 'method' => 'POST','action' => 'Admin\PostsController@store']) !!}
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">{{ __('Informe o título do novo post') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            {{--  Text  --}}
+                            {{ Form::textGroup('12','title', null, ['placeholder' => 'Título do novo post'], 'Título', $errors) }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancelar') }}</button>
+                        <button class="btn btn-primary">{{ __('Criar post') }}</button>
+                    </div>
+                </div>            
+            {!! Form::close() !!}            
+        </div>
+    </div>   
 @endpush

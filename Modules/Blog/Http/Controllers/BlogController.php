@@ -46,14 +46,12 @@ class BlogController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show(Post $post)
     {
-        $posts = Post::with('author')
-                    ->latestFirst()
-                    ->published()
-                    ->paginate($this->limit);
-        return view('blog::show', compact('posts'));
-        // return view('blog::show');
+        // $post = Post::find($id);
+
+        return view('blog::show', compact('post'));
+        // return $id;
     }
 
     /**

@@ -54,35 +54,63 @@ class PostsController extends Controller
      * @param  Request $request
      * @return Response
      */
+
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'author_id' => '',
-            'slug' => '',
-            'excerpt' => 'required',
-            // 'body' => '',
-            'editor' => 'required', // => body
-            'image' => '',
-            'published_at' => '',
-            'categories' => 'required',
+            'title' => 'required'//,
+            // 'author_id' => '',
+            // 'slug' => '',
+            // 'excerpt' => 'required',
+            // // 'body' => '',
+            // 'editor' => 'required', // => body
+            // 'image' => '',
+            // 'published_at' => '',
+            // 'categories' => 'required',
         ]);
 
-        // return Post::Create($request->all());
-        $post = new Post;
-        $post->author_id = '1';
-        $post->slug = str_random(20);
-        $post->title = $request->get('title');
-        $post->body = $request->get('editor');
-        $post->excerpt = $request->get('excerpt');
-        $post->published_at = Carbon::parse($request->get('date'));/*$request->has('published_at') ? Carbon::parse($request->get('date')) : Null;*/
-        $post->category_id = $request->get('categories');
-        // // tag's
-        $post->save();
-        $post->tags()->attach($request->get('tags'));
+        //return $request->all();
+        $tit = $request->get('title');
+        $post = Post::create([
+            'author_id' => rand(1,15),
+            'url' => str_slug($tit),
+            'title' => $tit, //max 50 caracteres
+        ]);
 
-        return back()->with('flash', 'Publicado com sucesso');
+        return redirect()->route('blog::posts.edit', $post);
+
     }
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required',
+    //         'author_id' => '',
+    //         'slug' => '',
+    //         'excerpt' => 'required',
+    //         // 'body' => '',
+    //         'editor' => 'required', // => body
+    //         'image' => '',
+    //         'published_at' => '',
+    //         'categories' => 'required',
+    //     ]);
+
+    //     // return Post::Create($request->all());
+    //     $post = new Post;
+    //     $post->author_id = '1';
+    //     $post->title = $request->get('title'); //max 50 caracteres
+    //     $post->slug = rand(10,15);
+    //     $post->url = str_slug($post->title);
+    //     $post->body = $request->get('editor');
+    //     $post->excerpt = $request->get('excerpt'); // max 150 caracteres
+    //     $post->published_at = Carbon::parse($request->get('date')); /*$request->has('published_at') ? Carbon::parse($request->get('date')) : Null;*/
+    //     $post->category_id = $request->get('categories');
+    //     // // tag's
+    //     $post->save();
+    //     $post->tags()->attach($request->get('tags'));
+
+    //     return back()->with('flash', 'Publicado com sucesso');
+
+    // }
 
     /**
      * Show the specified resource.
@@ -99,7 +127,7 @@ class PostsController extends Controller
      */
     public function edit()
     {
-        return view('blog::edit');
+        return view('blog::posts.edit');
     }
 
     /**
